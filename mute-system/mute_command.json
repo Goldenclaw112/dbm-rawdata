@@ -13,7 +13,7 @@
     },
     {
       "member": "1",
-      "varName": "",
+      "varName": "botMember",
       "permission": "MANAGE_ROLES",
       "iftrue": "3",
       "iftrueVal": "2",
