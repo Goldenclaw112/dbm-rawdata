@@ -1,0 +1,22 @@
+{
+    "name": "[LOOP] mute #1",
+    "temp": "5",
+    "event-type": "3",
+    "_id": "IEMmY",
+    "actions": [
+      {
+        "filename": "./resources/mutes/",
+        "storage": "1",
+        "varName2": "folder-loop",
+        "name": "Loop through Folder"
+      },
+      {
+        "source": "fYUtS",
+        "list": "7",
+        "varName": "folder-loop",
+        "tempVarName": "file",
+        "type": "true",
+        "name": "Loop Through List"
+      }
+    ]
+  }

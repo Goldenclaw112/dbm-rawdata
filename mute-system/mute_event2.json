@@ -1,0 +1,289 @@
+{
+    "name": "[LOOP] mute #2",
+    "temp": "",
+    "event-type": "0",
+    "_id": "jUIo9",
+    "actions": [
+      {
+        "filename": "./resources/mutes/${tempVars(\"file\")}",
+        "storage": "1",
+        "varName2": "new-file",
+        "name": "Read File"
+      },
+      {
+        "behavior": "0",
+        "interpretation": "0",
+        "code": "Date.now();",
+        "storage": "1",
+        "varName": "current-time",
+        "name": "Run Script"
+      },
+      {
+        "behavior": "0",
+        "jsonObjectVarName": "new-file",
+        "path": "$.muteExpires",
+        "storage": "1",
+        "varName": "expires",
+        "name": "Parse From Stored Json"
+      },
+      {
+        "storage": "1",
+        "varName": "current-time",
+        "comparison": "14",
+        "value": "tempVars(\"expires\")",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "2",
+        "iffalseVal": "35",
+        "name": "Check Variable"
+      },
+      {
+        "comment": "-----",
+        "color": "#ff0000",
+        "name": "Comment"
+      },
+      {
+        "behavior": "0",
+        "jsonObjectVarName": "new-file",
+        "path": "$.duration",
+        "storage": "1",
+        "varName": "duration",
+        "name": "Parse From Stored Json"
+      },
+      {
+        "behavior": "0",
+        "jsonObjectVarName": "new-file",
+        "path": "$.reason",
+        "storage": "1",
+        "varName": "muteReason",
+        "name": "Parse From Stored Json"
+      },
+      {
+        "behavior": "0",
+        "jsonObjectVarName": "new-file",
+        "path": "$.mutedBy",
+        "storage": "1",
+        "varName": "mutedBy",
+        "name": "Parse From Stored Json"
+      },
+      {
+        "comment": "-----",
+        "color": "#ff0000",
+        "name": "Comment"
+      },
+      {
+        "text": "${tempVars(\"file\")}",
+        "text2": ".json",
+        "text3": "",
+        "info": "1",
+        "storage": "1",
+        "varName": "file2",
+        "name": "Replace Text"
+      },
+      {
+        "info": "0",
+        "find": "MUTED ROLE ID",
+        "storage": "1",
+        "varName": "muted-role",
+        "name": "Find Role"
+      },
+      {
+        "info": "0",
+        "find": "${tempVars(\"file2\")}",
+        "storage": "1",
+        "varName": "mem",
+        "find2": "0",
+        "name": "Find Member"
+      },
+      {
+        "storage": "1",
+        "varName": "mem",
+        "comparison": "0",
+        "value": "",
+        "iftrue": "3",
+        "iftrueVal": "",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Variable"
+      },
+      {
+        "behavior": "0",
+        "interpretation": "0",
+        "code": "",
+        "storage": "0",
+        "varName": "",
+        "name": "Run Script"
+      },
+      {
+        "member": "2",
+        "varName2": "mem",
+        "role": "3",
+        "varName": "muted-role",
+        "name": "Remove Member Role"
+      },
+      {
+        "input": "",
+        "format": ".json",
+        "filename": "${tempVars(\"file2\")}",
+        "filepath": "./resources/mutes/",
+        "filetask": "3",
+        "name": "File Control"
+      },
+      {
+        "info": "0",
+        "find": "LOG CHANNEL ID",
+        "storage": "1",
+        "varName": "inf-logs",
+        "name": "Find Channel"
+      },
+      {
+        "comment": "-----",
+        "color": "#ff0000",
+        "name": "Comment"
+      },
+      {
+        "info": "0",
+        "find": "${tempVars(\"file2\")}",
+        "storage": "1",
+        "varName": "member",
+        "find2": "0",
+        "name": "Find Member"
+      },
+      {
+        "member": "2",
+        "varName": "member",
+        "info": "12",
+        "storage": "1",
+        "varName2": "avatar",
+        "name": "Store Member Info"
+      },
+      {
+        "comment": "--",
+        "color": "#ff0000",
+        "name": "Comment"
+      },
+      {
+        "info": "0",
+        "find": "${tempVars(\"mutedBy\")}",
+        "storage": "1",
+        "varName": "mutedByMod",
+        "find2": "0",
+        "name": "Find Member"
+      },
+      {
+        "member": "2",
+        "varName": "mutedByMod",
+        "info": "12",
+        "storage": "1",
+        "varName2": "mutedByAv",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "2",
+        "varName": "mutedByMod",
+        "info": "2",
+        "storage": "1",
+        "varName2": "mutedByAuth",
+        "name": "Store Member Info"
+      },
+      {
+        "comment": "-----",
+        "color": "#ff0000",
+        "name": "Comment"
+      },
+      {
+        "title": "Mute Expired",
+        "author": "${tempVars(\"mutedByAuth\")}",
+        "color": "FFAE42",
+        "url": "",
+        "authorIcon": "${tempVars(\"mutedByAv\")}",
+        "authorUrl": "",
+        "imageUrl": "",
+        "thumbUrl": "${tempVars(\"avatar\")}",
+        "timestamp": "true",
+        "debug": "false",
+        "text": "",
+        "year": "",
+        "month": "",
+        "day": "",
+        "hour": "",
+        "minute": "",
+        "second": "",
+        "storage": "1",
+        "varName": "e",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "e",
+        "fieldName": "Unmuted User",
+        "message": "<@${tempVars(\"file2\")}>",
+        "inline": "0",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "e",
+        "fieldName": "Muted By",
+        "message": "${tempVars(\"mutedByMod\")}",
+        "inline": "0",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "e",
+        "fieldName": "Duration",
+        "message": "${tempVars(\"duration\")}",
+        "inline": "0",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "muteReason",
+        "comparison": "1",
+        "value": "\"No reason provided.\"",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "3",
+        "iffalseVal": "2",
+        "name": "Check Variable"
+      },
+      {
+        "storage": "1",
+        "varName": "e",
+        "fieldName": "Mute Reason",
+        "message": "No reason provided.",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "count": "1",
+        "name": "Skip Actions"
+      },
+      {
+        "storage": "1",
+        "varName": "e",
+        "fieldName": "Mute Reason",
+        "message": "${tempVars(\"muteReason\")}",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "e",
+        "channel": "5",
+        "varName2": "inf-logs",
+        "storage3": "0",
+        "varName3": "",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "messageContent": "",
+        "name": "Send Embed Message"
+      },
+      {
+        "comment": "",
+        "color": "#000000",
+        "name": "Comment"
+      }
+    ]
+  }

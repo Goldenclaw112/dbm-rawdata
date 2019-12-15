@@ -1,0 +1,867 @@
+{
+  "name": "mute",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "t67y8",
+  "actions": [
+    {
+      "server": "0",
+      "varName": "",
+      "storage": "1",
+      "varName2": "botMember",
+      "name": "Get Bot as Member"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "MANAGE_ROLES",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Member Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "I do not have permission to manage the roles of others! Please fix that.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "--",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "KICK_MEMBERS",
+      "iftrue": "3",
+      "iftrueVal": "6",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Member Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "You don't have permission to mute!",
+      "storage": "1",
+      "varName2": "err",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "storage": "1",
+      "varName": "err",
+      "name": "Delete Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "----------",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "0",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "You must mention or provide an ID of a member, and include a mute reason!\n**This will override any existing mute!**\n`${server.tag || Files.data.settings.tag || \"\"}mute <@user/ID> <reason>`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "You must provide a duration!\n**This will override any existing mute!**",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "condition": "1",
+      "comparison": "2",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "Only mention one member!\n**This will override any existing mute!**",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "----------",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "condition": "1",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "3",
+      "name": "Check Parameters"
+    },
+    {
+      "member": "0",
+      "varName": "",
+      "info": "0",
+      "storage": "1",
+      "varName2": "obj",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "0",
+      "varName": "",
+      "info": "1",
+      "storage": "1",
+      "varName2": "id",
+      "name": "Store Member Info"
+    },
+    {
+      "count": "7",
+      "name": "Skip Actions"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "id",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "varName": "id",
+      "comparison": "9",
+      "value": "18",
+      "iftrue": "3",
+      "iftrueVal": "3",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "That is not an ID!",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "-----",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"id\")}",
+      "storage": "1",
+      "varName": "obj",
+      "find2": "0",
+      "name": "Find Member"
+    },
+    {
+      "comment": "--",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "info": "0",
+      "infoIndex": "2",
+      "storage": "1",
+      "varName": "duration",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "1",
+      "infoIndex": "3",
+      "storage": "1",
+      "varName": "muteReasonParams",
+      "name": "Store Command Params"
+    },
+    {
+      "comment": "--",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "changeType": "0",
+      "value": "1",
+      "storage": "1",
+      "varName": "num",
+      "name": "Control Variable"
+    },
+    {
+      "changeType": "0",
+      "value": "${tempVars(\"duration\").length}",
+      "storage": "1",
+      "varName": "duration-length",
+      "name": "Control Variable"
+    },
+    {
+      "anchor_id": "loop",
+      "color": "#ff8000",
+      "description": "Beginning of/restart the loop",
+      "name": "Create Anchor"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "const slice = tempVars(\"duration\").slice(0, tempVars(\"num\"))\nthis.storeValue(slice, 1, \"slice\", cache);\nconst slice2 = !isNaN(tempVars(\"slice\"));\nthis.storeValue(slice2, 1, \"slice2\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "slice2",
+      "comparison": "1",
+      "value": "true",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "5",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "num",
+      "comparison": "1",
+      "value": "tempVars(\"duration-length\")",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "You must include a duration type, e.g. 24__**h**__.\n**This will override any existing mute!**",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "changeType": "1",
+      "value": "1",
+      "storage": "1",
+      "varName": "num",
+      "name": "Control Variable"
+    },
+    {
+      "description": "",
+      "jump_to_anchor": "loop",
+      "color": "#ff8000",
+      "name": "Jump to Anchor"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "const numerical = tempVars(\"slice\").slice(0, tempVars(\"num\") - 1)\nconst letter = tempVars(\"slice\").slice(tempVars(\"num\") - 1, tempVars(\"num\"))\nthis.storeValue(numerical, 1, \"numerical\", cache);\nthis.storeValue(letter, 1, \"letter\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "numerical",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "You must provide a numerical length for the duration, e.g. __**24**__h.\n**This will override any existing mute!**",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "----------",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "2",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "changeType": "0",
+      "value": "1",
+      "storage": "1",
+      "varName": "hasReason",
+      "name": "Control Variable"
+    },
+    {
+      "count": "1",
+      "name": "Skip Actions"
+    },
+    {
+      "changeType": "0",
+      "value": "0",
+      "storage": "1",
+      "varName": "hasReason",
+      "name": "Control Variable"
+    },
+    {
+      "comment": "--",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "varName": "letter",
+      "comparison": "1",
+      "value": "m",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "3",
+      "name": "Check Variable"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "const muteExpires = Math.round((Date.now() + (tempVars(\"numerical\") * 60000)) / 1000);\nthis.storeValue(muteExpires, 1, \"muteExpires\", cache);\nconst muteExpires2 = Date.now() + (tempVars(\"numerical\")) * 60000\nthis.storeValue(muteExpires2, 1, \"muteExpires2\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "changeType": "0",
+      "value": "\"minute(s)\"",
+      "storage": "1",
+      "varName": "time",
+      "name": "Control Variable"
+    },
+    {
+      "count": "10",
+      "name": "Skip Actions"
+    },
+    {
+      "storage": "1",
+      "varName": "letter",
+      "comparison": "1",
+      "value": "h",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "3",
+      "name": "Check Variable"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "const muteExpires = Math.round((Date.now() + (tempVars(\"numerical\") * 3600000)) / 1000);\nthis.storeValue(muteExpires, 1, \"muteExpires\", cache);\nconst muteExpires2 = Date.now() + (tempVars(\"numerical\")) * 3600000\nthis.storeValue(muteExpires2, 1, \"muteExpires2\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "changeType": "0",
+      "value": "\"hour(s)\"",
+      "storage": "1",
+      "varName": "time",
+      "name": "Control Variable"
+    },
+    {
+      "count": "6",
+      "name": "Skip Actions"
+    },
+    {
+      "storage": "1",
+      "varName": "letter",
+      "comparison": "1",
+      "value": "d",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "3",
+      "name": "Check Variable"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "const muteExpires = Math.round((Date.now() + (tempVars(\"numerical\") * 86400000)) / 1000);\nthis.storeValue(muteExpires, 1, \"muteExpires\", cache);\nconst muteExpires2 = Date.now() + (tempVars(\"numerical\")) * 86400000\nthis.storeValue(muteExpires2, 1, \"muteExpires2\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "changeType": "0",
+      "value": "\"day(s)\"",
+      "storage": "1",
+      "varName": "time",
+      "name": "Control Variable"
+    },
+    {
+      "count": "2",
+      "name": "Skip Actions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "You've either inputted something incorrect, or your input is yet to be supported!\nRemember the format: `!mute <@user/ID> <reason>`.\nEx. `${server.tag || Files.data.settings.tag || \"\"}mute @Clyde#0000 24h Please stop spamming.`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "time": "${tempVars(\"muteExpires\")}",
+      "storage": "1",
+      "varName": "muteExpires3",
+      "name": "Convert Timestamp to Date"
+    },
+    {
+      "input": "",
+      "format": ".json",
+      "filename": "${tempVars(\"id\")}",
+      "filepath": "./resources/mutes/",
+      "filetask": "0",
+      "name": "File Control"
+    },
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "2",
+      "iftrue": "3",
+      "iftrueVal": "3",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "input": "{\n \"mutedAt\": ${Date.now()},\n \"muteExpires\": ${tempVars(\"muteExpires2\")},\n \"mutedBy\": \"${member.id}\",\n \"duration\": \"${tempVars(\"numerical\")}${tempVars(\"letter\")}\",\n \"reason\": \"No reason provided.\"\n}",
+      "format": ".json",
+      "filename": "${tempVars(\"id\")}",
+      "filepath": "./resources/mutes/",
+      "filetask": "1",
+      "name": "File Control"
+    },
+    {
+      "count": "3",
+      "name": "Skip Actions"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "input": "{\n \"mutedAt\": ${Date.now()},\n \"muteExpires\": ${tempVars(\"muteExpires2\")},\n \"mutedBy\": \"${member.id}\",\n \"duration\": \"${tempVars(\"numerical\")}${tempVars(\"letter\")}\",\n \"reason\": \"${tempVars(\"muteReasonParams\")}\"\n}",
+      "format": ".json",
+      "filename": "${tempVars(\"id\")}",
+      "filepath": "./resources/mutes/",
+      "filetask": "1",
+      "name": "File Control"
+    },
+    {
+      "comment": "-----",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "info": "0",
+      "find": "MUTED ROLE ID",
+      "storage": "1",
+      "varName": "muted-role",
+      "name": "Find Role"
+    },
+    {
+      "member": "2",
+      "varName2": "obj",
+      "role": "3",
+      "varName": "muted-role",
+      "name": "Add Member Role"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "auth-username",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "auth-username",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "obj",
+      "info": "2",
+      "storage": "1",
+      "varName2": "mem-username",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "obj",
+      "info": "12",
+      "storage": "1",
+      "varName2": "mem-avatar",
+      "name": "Store Member Info"
+    },
+    {
+      "title": "You have been muted!",
+      "author": "${msg.author.username}",
+      "color": "FFAE42",
+      "url": "",
+      "authorIcon": "${msg.author.displayAvatarURL}",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "https://cdn.discordapp.com/attachments/627279415906140170/649342489232277526/muted.png",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "sameChannel",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "sameChannel",
+      "fieldName": "Duration",
+      "message": "${tempVars(\"numerical\")} ${tempVars(\"time\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "2",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "storage": "1",
+      "varName": "sameChannel",
+      "fieldName": "Reason",
+      "message": "No reason provided.",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "count": "1",
+      "name": "Skip Actions"
+    },
+    {
+      "storage": "1",
+      "varName": "sameChannel",
+      "fieldName": "Reason",
+      "message": "${tempVars(\"muteReasonParams\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "sameChannel",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "messageContent": "${tempVars(\"obj\")}",
+      "name": "Send Embed Message"
+    },
+    {
+      "comment": "--",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "title": "You have been muted!",
+      "author": "${msg.author.username}",
+      "color": "FFAE42",
+      "url": "",
+      "authorIcon": "${msg.author.displayAvatarURL}",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "https://cdn.discordapp.com/attachments/627279415906140170/649342489232277526/muted.png",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "toAuthor",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "toAuthor",
+      "fieldName": "Duration",
+      "message": "${tempVars(\"numerical\")} ${tempVars(\"time\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "2",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "storage": "1",
+      "varName": "toAuthor",
+      "fieldName": "Reason",
+      "message": "No reason provided.",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "count": "1",
+      "name": "Skip Actions"
+    },
+    {
+      "storage": "1",
+      "varName": "toAuthor",
+      "fieldName": "Reason",
+      "message": "${tempVars(\"muteReasonParams\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "toAuthor",
+      "channel": "5",
+      "varName2": "obj",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "messageContent": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "comment": "--",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "info": "0",
+      "find": "634830164106149910",
+      "storage": "1",
+      "varName": "inf-logs",
+      "name": "Find Channel"
+    },
+    {
+      "title": "",
+      "author": "${msg.author.username}",
+      "color": "FFAE42",
+      "url": "",
+      "authorIcon": "${msg.author.displayAvatarURL}",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "${tempVars(\"mem-avatar\")}",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "logged",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "logged",
+      "fieldName": "User Muted",
+      "message": "${tempVars(\"obj\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "logged",
+      "fieldName": "Muted By",
+      "message": "${member}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "logged",
+      "fieldName": "Duration",
+      "message": "${tempVars(\"numerical\")}${tempVars(\"letter\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "logged",
+      "fieldName": "Expires",
+      "message": "${tempVars(\"muteExpires3\")}\n",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "2",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "storage": "1",
+      "varName": "logged",
+      "fieldName": "Reason",
+      "message": "No reason provided.",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "count": "1",
+      "name": "Skip Actions"
+    },
+    {
+      "storage": "1",
+      "varName": "logged",
+      "fieldName": "Reason",
+      "message": "${tempVars(\"muteReasonParams\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "logged",
+      "channel": "5",
+      "varName2": "inf-logs",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "messageContent": "",
+      "name": "Send Embed Message"
+    }
+  ]
+}
